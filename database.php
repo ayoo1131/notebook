@@ -1,13 +1,10 @@
 <?php
 
-echo 'connecting to MySQL';
-echo '<br>';
-
 $user = 'ayoo1131';
 $password = 'Dum57Occ**';
-$database = 'users';
-$table = 'notebook';
-$servername = '18.219.29.36';
+$database = 'notebook';
+$table = 'users';
+$servername = 'localhost';
 
 //PDO
 /*
@@ -32,7 +29,4 @@ if($mysqli->connect_errno)
 	printf("Connection Failed: %s\n", $mysqli->connect_error);
 	exit;
 }
-
-echo 'connection to MySQL successful';
-echo '<br>';
 ?>
