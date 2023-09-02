@@ -1,7 +1,7 @@
 <?php
 
 $user = 'ayoo1131';
-$password = 'Dum57Occ**';
+$sql_password = 'Dum57Occ**';
 $database = 'notebook';
 $table = 'users';
 $servername = 'localhost';
@@ -22,7 +22,7 @@ catch(PDOException $e)
 */
 
 //MySQLi
-$mysqli = new mysqli($servername, $user, $password, $database);
+$mysqli = new mysqli($servername, $user, $sql_password, $database);
 
 if($mysqli->connect_errno) 
 {

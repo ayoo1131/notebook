@@ -1,30 +1,49 @@
 <?php
-    $username = $_POST["username"];
-    $password = $_POST["password"];
+    $login_username = $_POST["username"];
+    $login_password = $_POST["password"];
 
     if(isset($_POST["login_button"]))
     {
-        //Connect to the Database from PHP
-        require ('database.php');
-
-        //Check if the user is in the Database
-        
-        require('check_user.php');
-        $username_in_DB = check_user($username, $mysqli);
         $login_error = null;
-        
-        if ($username_in_DB)
+        if (empty($login_username))
         {
-            echo "1";
-            //require ('username_password_login.php');
-            //$verify_success=username_password_login($username, $password);
+            $login_error = "Please enter the username";
+        }
+
+        elseif(empty($login_password))
+        {
+            $login_error="Please enter the password";
         }
 
         else
         {
-            $login_error ="Username is not registered";
-        }
-        
-    }
+            //Connect to the Database from PHP
+            require ('database.php');
 
+            //Check if the user is in the Database
+            require('check_user.php');
+            $username_in_DB = check_user($login_username, $mysqli);
+
+            if ($username_in_DB)
+            {
+                require ('username_password_login.php');
+                $verify_success=username_password_login($login_username, $login_password, $mysqli);
+
+                if($verify_success)
+                {
+                    echo "Login successful!";
+                }
+
+                else
+                {
+                    $login_error = "Username and/or Password not correct";
+                }
+            }
+
+            else
+            {
+                $login_error ="Username is not registered";
+            }
+        }
+    }
 ?>
