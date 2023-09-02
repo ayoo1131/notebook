@@ -1,3 +1,4 @@
+<?php include('process_login.php')?>
 <!DOCTYPE html>
 
 <html>
@@ -5,15 +6,16 @@
 	<title>Notebook Signup</title>
 	<meta charset="UTF-8">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/light.css">
+	<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 	<h1> Notebook Login</h1>
 
-	<form action="process_signup.php" method="post">
-		<div class="sign_up_error">
-			<?php if (isset($username)): ?>
-				<span><?php echo "Username already taken!"; echo "<br>"; ?></span>
+	<form action="login.php" method="post">
+		<div class="log_in_error">
+			<?php if (isset($login_error)): ?>
+				<span><?php echo $login_error; echo "<br>"; ?></span>
 			<?php endif ?>
 		</div>
 		
@@ -27,14 +29,13 @@
 			<input type="password" id="password" name="password">
 		</div>
 
-		<button>Login</button>
+		<button type="submit" name="login_button" id="login_button">Log In</button>
 	</form>
 
 	<form action="signup.php">
 		<h3>Don't have an Account?</h3>
 		<button type="submit">Sign up</button>
 	</form>
-
 
 </body>
 

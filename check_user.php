@@ -1,5 +1,5 @@
 <?php
-function check_new_user($username,$mysqli)
+function check_user($username, $mysqli) //Return true if user is in database, false if user not in database
 {
     //MySQLi SELECT Prepared statement (check if username exists)
     $stmt = $mysqli->prepare("SELECT username FROM users WHERE username=?"); 
@@ -11,10 +11,13 @@ function check_new_user($username,$mysqli)
     if ($num_rows >= 1)//Username already exists in the database
     {
         $name_error = "Username already taken";
-        return false;
+        return true;
     }
 
-    $stmt->close();
-    return true;
+    else //Username is not registered in the database
+    {
+        $stmt->close();
+        return false;
+    }
 }
 ?>

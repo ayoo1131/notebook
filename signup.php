@@ -13,8 +13,8 @@
 
 	<form action="signup.php" method="post">
 		<div class="sign_up_error">
-			<?php if ($username_error): ?>
-				<span><?php echo "Username Already Taken"; echo "<br>"; ?></span>
+			<?php if ($signup_error): ?>
+				<span><?php echo $signup_error; echo "<br>"; ?></span>
 			<?php endif ?>
 		</div>
 
@@ -34,14 +34,15 @@
 		</div>
 
 		<div>
-			<button type="submit" name="register" id="reg_button">Sign up</button><br><br><br>
+			<button type="submit" name="signup_button" id="reg_button">Sign up</button><br><br><br>
 		</div>
 	</form>
 
-	<form>
-		<input type="button" value="Go back!" onclick="history.back()">
-	</form>
-
+<?php 
+	echo '<form method="POST" action="login.php">
+	<input type="submit" value ="Go Back"/> 
+	</form>';
+?>
 
 </body>
 
