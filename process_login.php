@@ -29,12 +29,17 @@
                 require ('username_password_login.php');
                 $verify_success=username_password_login($login_username, $login_password, $mysqli);
 
-                if($verify_success)
+                if($verify_success)//Username and password are valid, logging in user
                 {
-                    echo "Login successful!";
+                    session_start();
+                    $_SESSION["username"] = $login_username;
+                    $_SESSION["logged_in"]= true;
+
+                    header('Location: notebook.php');
+                    exit();
                 }
 
-                else
+                else //Username and password are not valid.
                 {
                     $login_error = "Username and/or Password not correct";
                 }
